@@ -18,7 +18,9 @@ namespace ProjectEuler
             // // Oct 26, 2021
             // Problems001to010.Solution006(100, false, false); // In: 100 Out: 25164150
             // Problems001to010.Solution007(10001, false, true); // In: 10,001 Out: 104743
-            Problems001to010.Solution008(veryLongNumber, 13, true); // In: 13 Out: 23514624000 or 2.3514624E+10
+            // Problems001to010.Solution008(veryLongNumber, 13, true); // In: 13 Out: 23514624000 or 2.3514624E+10
+            // Oct 29, 2021
+            Problems001to010.Solution009(1000, true);
         }
     }
 }

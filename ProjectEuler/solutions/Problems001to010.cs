@@ -237,6 +237,52 @@ namespace ProjectEuler.Solutions
                 HelperMethods.WriteErrorLog("Solution008", ex);
             }
         }
+        
+        /// <summary>
+        /// Problem 009
+        /// Smalles Multiple
+        /// Url: https://projecteuler.net/problem=9
+        /// </summary>
+        public static void Solution009(int limit, bool showOutput)
+        {
+            // Approach: use given equations, substitute and get formula to calculate b and c
+            // then iterate values of a in a single loop, calculate b and c, and find the one that matches
+            // Substitution described here: https://blog.dreamshire.com/solutions/project_euler/project-euler-problem-009-solution/
+            // Derivation (more correct?): https://www.dropbox.com/s/kep0cbtbkdd011a/formula.png
+            try
+            {
+                int a = 1,
+                    b = 1,
+                    c = 1,
+                    n = limit;
+                
+                // Original formulas
+                // a2 + b2 = c2
+                // a + b + c = n
+
+                // Substitution to calculate c and b
+                // c = n - a - b
+                // b = n(n - 2a)/2(n-a) << wrong?
+                // b = a2 - (a - n)2 / 2 (a - n)
+
+
+                for(int i = 1; i < n; i++)
+                {
+                    a = i;
+                    // b = n * (n - (2 * a)) / 2 * (n - a);
+                    b = (a * a) - ((a - n) * (a - n)) / 2 * (a-n);
+                    c = n - a - b;
+                    if (showOutput)
+                        Console.WriteLine($"n: {n.ToString()} a: {a.ToString()} b: {b.ToString()} c: {c.ToString()}");
+                }   
+                Console.WriteLine($"Solution 009: 000");
+            }
+            catch (Exception ex)
+            {
+                HelperMethods.WriteErrorLog("Solution009", ex);
+            }
+        }
+
         /// <summary>
         /// Problem 000
         /// Smalles Multiple
