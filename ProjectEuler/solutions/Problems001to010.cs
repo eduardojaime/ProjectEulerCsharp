@@ -13,7 +13,7 @@ namespace ProjectEuler.Solutions
         /// Url: https://projecteuler.net/problem=1
         /// </summary>
         public static void Solution001(int limit, bool showOutput)
-        {
+        { // your solution goes here
             List<int> multiples = new List<int>();
 
             for (int i = 3; i < limit; i++)
@@ -61,6 +61,88 @@ namespace ProjectEuler.Solutions
             {
                 HelperMethods.WriteErrorLog("Solution002", ex);
             }
+        }
+
+        /// <summary>
+        /// Problem 003
+        /// Largest prime factor
+        /// Url: https://projecteuler.net/problem=3
+        /// Solution: Applies factorization to find the largest odd divisor
+        /// </summary>
+        public static void Solution003(long number, bool showOutput)
+        {
+            // Stack that will hold all numbers
+            Stack<long> primeFactors = new Stack<long>();
+            // div = divisor
+            // div is the number I'll use for the division and I'll start from 2
+            for (long div = 2; div <= number; div++)
+            {
+                // skip even numbers after two
+                // even numbers are not prime (they can be divided by 2)
+                if (div > 2 && div % 2 == 0)
+                    continue;
+                // inner loop until I find a number that divides my given number evenly
+                if (showOutput) Console.WriteLine($"remainder of {number} divided by {div} is {(number % div).ToString()}");
+
+                while (number % div == 0) // div can divide my number evenly
+                {
+                    primeFactors.Push(div);
+                    number = number / div;
+                    if (showOutput)
+                    {
+                        Console.WriteLine($"factor found: {div} added to the stack");
+                        Console.WriteLine($"number new value is: {number}");
+                    }
+                }
+            }
+
+            long largestPrime = primeFactors.Peek();
+
+            if (showOutput)
+            {
+                while (primeFactors.Count > 0)
+                {
+                    Console.Write(primeFactors.Pop().ToString() + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine($"Solution 003: {largestPrime.ToString()}");
+        }
+
+        /// <summary>
+        /// Problem 004
+        /// Largest palindrome product
+        /// Url: https://projecteuler.net/problem=4
+        /// </summary>
+        public static void Solution004(int limit)
+        {
+            // range of values go from 0 to limit. i.e. for 3-digit numbers, limit is 999
+            // initialize variables
+            int numA = limit; 
+            int numB = limit;
+
+            int result = numA * numB;
+            int max = 0;
+
+            while (numA >= 1)
+            {
+                if (IsPalindrome(result))
+                {
+                    max = Math.Max(result, max);
+                }
+
+                numB--;
+
+                if (numB == 0)
+                {
+                    numB = limit;
+                    numA--;
+                }
+
+                result = numA * numB;                
+            }
+
+            Console.WriteLine($"Solution 005: Largest palindrome product of two 3-digit numbers is {max.ToString()}");
         }
 
         /// <summary>
@@ -237,7 +319,7 @@ namespace ProjectEuler.Solutions
                 HelperMethods.WriteErrorLog("Solution008", ex);
             }
         }
-        
+
         /// <summary>
         /// Problem 009
         /// Smalles Multiple
@@ -255,7 +337,7 @@ namespace ProjectEuler.Solutions
                     b = 1,
                     c = 1,
                     n = limit;
-                
+
                 // Original formulas
                 // a2 + b2 = c2
                 // a + b + c = n
@@ -266,15 +348,15 @@ namespace ProjectEuler.Solutions
                 // b = a2 - (a - n)2 / 2 (a - n)
 
 
-                for(int i = 1; i < n; i++)
+                for (int i = 1; i < n; i++)
                 {
                     a = i;
                     // b = n * (n - (2 * a)) / 2 * (n - a);
-                    b = (a * a) - ((a - n) * (a - n)) / 2 * (a-n);
+                    b = (a * a) - ((a - n) * (a - n)) / 2 * (a - n);
                     c = n - a - b;
                     if (showOutput)
                         Console.WriteLine($"n: {n.ToString()} a: {a.ToString()} b: {b.ToString()} c: {c.ToString()}");
-                }   
+                }
                 Console.WriteLine($"Solution 009: 000");
             }
             catch (Exception ex)

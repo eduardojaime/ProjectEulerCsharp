@@ -12,15 +12,17 @@ namespace ProjectEuler
             Console.WriteLine("Hello Project Euler!");
             // Apr 22, 2021 
             // Problems001to010.Solution001(1000, false); // In: 1000 Out: 233168
-            // // Oct 25, 2021
+            // Oct 25, 2021
             // Problems001to010.Solution002(4000000, false); // In: 4,000,000 Out: 4613732
+            // Problems001to010.Solution003(600851475143 , true); // In: 600,851,475,143 
             // Problems001to010.Solution005(20, false); // In: 20 Out: 232792560
-            // // Oct 26, 2021
+            // Oct 26, 2021
             // Problems001to010.Solution006(100, false, false); // In: 100 Out: 25164150
             // Problems001to010.Solution007(10001, false, true); // In: 10,001 Out: 104743
             // Problems001to010.Solution008(veryLongNumber, 13, true); // In: 13 Out: 23514624000 or 2.3514624E+10
             // Oct 29, 2021
-            Problems001to010.Solution009(1000, true);
+            // Problems001to010.Solution009(1000, true);
+            Console.ReadKey();
         }
     }
 }
